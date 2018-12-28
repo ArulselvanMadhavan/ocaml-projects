@@ -1,0 +1,5 @@
+* Learning Ocaml for fun
+
+** Installation
+   - I followed these - [[http://dev.realworldocaml.org/install.html][Installation Instructions from Real World Ocaml site]]
+   - 

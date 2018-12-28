@@ -1,0 +1,15 @@
+* Real World OCaml 
+** Language Features
+   - Garbage Collection
+   - First class functions
+   - Static type checking
+   - Parametric Polymorphism
+   - Support for immutable programming
+   - Type inference
+   - ADTs and pattern matching
+** Compiler
+   - Straight forward compilation strategy
+   - An easy to predict runtime behavior
+   - Incremental Garbage collector
+** History
+   - Born in 1996 at INRIA, France

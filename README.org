@@ -2,4 +2,7 @@
 
 ** Installation
    - I followed these - [[http://dev.realworldocaml.org/install.html][Installation Instructions from Real World Ocaml site]]
-   - 
+*** Emacs
+    - I had to install MELPA packages merlin, tuareg and utop
+** Learning Resources
+   - [[http://dev.realworldocaml.org/index.html][RWO]] - Prologue

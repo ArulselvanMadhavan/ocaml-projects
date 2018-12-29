@@ -1,0 +1,15 @@
+* Defense against bugs
+  - Make them impossible
+    - Program in a language that guarantees memory safety
+    - Type safety
+  - Tools to find bugs
+    - Formal methods
+  - Make them immediately visible
+    - assertions
+  - Extensive testing
+  - If all the above fails, resort to debugging.
+* How to debug
+  - Distill thebug into a small test case
+  - Employ the scientific method
+  - Fix the bug
+  - Permanently add the test case to the test suite.

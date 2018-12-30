@@ -1,0 +1,15 @@
+* Data in OCaml
+** Pattern Matching
+   - Exhaustiveness
+   - Unused branches
+** Tail Recursion
+** Most List syntax
+   #+BEGIN_SRC ocaml
+   let rec sum = function
+   | [] -> 0
+   | h :: t -> h + sum t
+   #+END_SRC
+** List comprehensions
+   #+BEGIN_SRC bash
+   opam install -y ppx_monadic
+   #+END_SRC

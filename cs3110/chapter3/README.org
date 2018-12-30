@@ -13,3 +13,98 @@
    #+BEGIN_SRC bash
    opam install -y ppx_monadic
    #+END_SRC
+** ADT
+   #+BEGIN_SRC ocaml
+   type point = float * float
+   type Shape =
+     | Point of point
+     | Circe of point * float (* center and radius *)
+     | Rect  of point * point (* lower-left and upper-right corners *)
+   #+END_SRC
+   - Variant types are sometimes called /tagged unions/.
+   - Variant types contain both sum and product types
+*** Recursive Variants
+    #+BEGIN_SRC ocaml
+    type intlist = Nil | Cons of int * intlist
+    #+END_SRC
+    - Records can be recursive
+      #+BEGIN_SRC ocaml
+      type node = {value:int; next:node} (* OK *)
+      #+END_SRC
+    - Mutually recursive types
+      #+BEGIN_SRC ocaml
+      type node = {value:int; next:mylist}
+      and mylist = Nil | Node of node 
+      #+END_SRC
+*** Parameterized Variants
+    #+BEGIN_SRC ocaml
+    type 'a mylist = Nil | Cons of 'a * 'a mylist
+    #+END_SRC
+    - ~mylist~ is a /type constructor/ not a type.
+    - Parametric Polymorphism
+    - More than one type parameters.
+    #+BEGIN_SRC ocaml
+    type ('a, 'b) pair = {first: 'a; second: 'b}
+    #+END_SRC
+*** Polymorphic variants or Anonymous Variants
+    #+BEGIN_SRC ocaml
+    let f = function
+      | 0 -> `Infinity
+      | 1 -> `Finite 1
+      | n -> `Finite (-n)
+    #+END_SRC
+*** List - Built in Variant
+    #+BEGIN_SRC ocaml
+    type 'a list = [] | :: 'a * 'a list
+    #+END_SRC
+** Exceptions
+   To define a new type of exception
+   #+BEGIN_SRC ocaml
+   exception E of t
+   #+END_SRC
+   - Example for creating an exception value
+     #+BEGIN_SRC ocaml
+     Failure "something went wrong"
+     #+END_SRC
+   - To raise an exception
+     #+BEGIN_SRC ocaml
+     raise e
+     #+END_SRC
+   - Example
+     #+BEGIN_SRC ocaml
+     raise (Failure s)
+     #+END_SRC
+   - To catch an exception
+     #+BEGIN_SRC ocaml
+     try e with
+     | p1 -> e1
+     | pn -> en
+     #+END_SRC
+   - Exceptions are extensible variants
+   - All exceptions have type ~exn~
+     - Dynamic semantics
+       - Evaluation of an expression either produces a value or an
+         exception packet.
+       - Packets are not normal OCaml values
+       - ~raise~ and ~try~ can recognize the exception packets.
+** Trees
+   - Trees using Tuples
+   #+BEGIN_SRC ocaml
+   type 'a tree =
+   | Leaf
+   | Node of 'a * 'a tree * 'a tree
+   #+END_SRC
+   - Trees using Records
+     #+BEGIN_SRC ocaml
+     type 'a tree =
+       | Leaf
+       | Node of 'a node
+     and 'a Node = {
+       value: 'a;
+       left: 'a tree;
+       right: 'a tree;
+     }
+     #+END_SRC
+   - Recursive type declaration rules
+     - Any cycle of recursive types must include at least one record
+       or variant type.

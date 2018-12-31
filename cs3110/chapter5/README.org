@@ -1,0 +1,157 @@
+* Modules
+
+** Structures
+   #+BEGIN_SRC ocaml
+   module ModuleName = struct
+     (* definitions *)
+   end
+   #+END_SRC
+   - example
+     #+BEGIN_SRC ocaml
+     module ListStack = struct
+       let empty = []
+       let is_empty s = (s = [])
+       let push x s = x :: s
+       let peek = function
+         | [] -> failWith "Empty"
+         | x::_ -> x
+       
+       let pop = function
+         | [] -> failWith "Empty"
+         | x::_ -> xs
+     end
+     #+END_SRC
+
+** Signatures
+   #+BEGIN_SRC ocaml
+   module type DummySig = sig
+     val f : int -> int
+   end
+   #+END_SRC
+   - Implementations
+     #+BEGIN_SRC ocaml
+     module M1 : DummySig = sig
+       let f x = x + 1
+     end
+     #+END_SRC
+     
+     #+BEGIN_SRC ocaml
+     module M2 : DummySig = sig
+       let f x = x
+     end
+     #+END_SRC
+
+   - M2 implements a function ~'a -> 'a~ . This is acceptable
+     implementation of the ~DummySig~ since the signature is more
+     specific than the actual implementation.
+
+** Compilation Units
+   - A pair of OCaml source files in the same directory.
+   - ~.mli~ - interface file
+   - ~.ml~ - implementation file
+     #+BEGIN_SRC ocaml
+     module Foo: sig
+       val x : int
+       val f : int -> int -> int
+     end = struct
+       let x = 0
+       let y = 12
+       let f x y = x + y
+     end
+     #+END_SRC
+   - Comments in the interface file vs an implementation file are different.
+   - Interface file comments guidelines
+     - how to use the abstraction
+     - preconditions for calling its functions
+     - exceptions they might raise
+     - some notes on what algorithms are used to implement operations.
+   - Implementation file guidelines
+     - representation type used
+     - how code works
+     - important internal variants it maintains
+
+** Loading Compiled Modules
+   - ~#load~
+   - ~.cmo~ files are Compiled Module Object aka bytecode
+
+** Load vs use
+   - ~#load~ a CMO and ~use~-ing an uncompiled source file are different.
+   - Former loads bytecode and makes it available for use.
+   - Latter is just /textual inclusion/
+   - Bottomline: Prefer ~#load~
+
+** Includes
+   - It enables a structure to include all the values defined by
+     another signature, or a signature to include all the names
+     declared by another signature.
+   - Can be used inside structures and inside signatures
+
+** Encapsulation and Includes
+   #+BEGIN_SRC ocaml
+   let of_list lst = lst
+   #+END_SRC
+
+** Include vs Open
+   - Open just makes the statements visible for other implementations
+     in the scope but doesn't actually make the statements part of the
+     module signature.
+
+** Read the setincludes.ml fully to understand module and extending them with includes
+
+* Functors
+  - Problem: Add code to two different modules, but that code needed
+    to be parameterized on the details of the module to which it was
+    being added.
+  - /Functors/ enable that kind of parameterization.
+  - OCaml is stratified: structures are distinct from values
+  - So, functors are simply a function from structures to structures.
+    #+BEGIN_SRC ocaml
+    module type X = sig
+      val x : int
+    end
+    #+END_SRC
+  - Example of a functor
+    #+BEGIN_SRC ocaml
+    module IncX (M:X) = struct
+      let x = M.x + 1
+    end
+    #+END_SRC
+  - /IncX/ is a /parameterized structure/
+  - A Functor can return any structure it likes
+  - Why /functor/?
+    - A /category/ contains /morphisms/, which are a generalization of
+      functions as we known them, and a /functor/ is map between categories.
+    - Ocaml structures contain functions and OCaml functors map from
+      one structure to another.
+  - Type inference of the signature of the functor input is not
+    supported.
+    #+BEGIN_SRC ocaml
+      module F (M: S) = struct
+        (* some functions *)
+      end
+    #+END_SRC
+    #+BEGIN_SRC ocaml
+      module F = functor (M : S) -> struct
+        (* some functions *)
+      end
+    #+END_SRC
+  - Both the above examples are equal.
+  - Multiple structures
+    #+BEGIN_SRC ocaml
+      module F = functor (M1 : S1) -> functor (M2 : S2) -> struct
+        (* some functions *)
+      end
+    #+END_SRC
+  - Functor with output type annotated
+    #+BEGIN_SRC ocaml
+      module F (M : Si) : So = struct
+        (* some functions *)
+      end
+    #+END_SRC
+    #+BEGIN_SRC ocaml
+      module F : functor (M : Si) -> So =
+        functor (M : Si) -> struct 
+          (* some functions *)
+        end
+      end
+    #+END_SRC

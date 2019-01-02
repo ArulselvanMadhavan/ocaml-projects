@@ -1,0 +1,20 @@
+* Advanced Data Structures
+** Streams
+   #+BEGIN_SRC ocaml
+   type 'a lazystream = 
+     Cons 'a * 'a lazystream Lazy.t
+   #+END_SRC
+** BST
+   - BST Invariant
+     - For any node n, every node in the left subtree of n has a value
+       less n's value and the right subtree has values greater than n.
+   - Balanced Binary Tree structures - guarantees lookup of O(log n)
+     - AVL trees
+     - 2-3 trees
+     - Red-black trees
+   - RBT invariants
+     - No two adjacent red nodes along any path.
+     - Every path from the root to a leaf has the same number of black nodes.
+       - Also known as the /Black height/ of the tree
+     - Root of the tree is /Black/
+     - 

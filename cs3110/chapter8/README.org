@@ -17,4 +17,22 @@
      - Every path from the root to a leaf has the same number of black nodes.
        - Also known as the /Black height/ of the tree
      - Root of the tree is /Black/
-     - 
+** Mutability
+   - Some data structures like arrays and hash tables cannot be
+     implemented without mutability
+   - I/O is fundamentally about mutation.
+** Refs
+   - A /ref/ is like a pointer or reference.
+   - A location in memory whose contents may change.
+   - AKA /ref cells/
+     #+BEGIN_SRC bash
+utop[0]> let x = ref 0;;
+val x : int ref = {contents = 0}
+utop[1]> !x;;
+- : int = 0
+utop[2]> x := 1;;
+- : unit = ()
+utop[3]> !x;;
+- : int = 1
+utop[4]>      
+     #+END_SRC

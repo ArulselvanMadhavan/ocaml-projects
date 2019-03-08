@@ -6,3 +6,8 @@
     - I had to install MELPA packages merlin, tuareg and utop
 ** Learning Resources
    - [[http://dev.realworldocaml.org/index.html][RWO]] - Prologue
+** OPAM
+   - For creating local environments
+     #+BEGIN_SRC bash
+     opam switch create . ocaml-base-compiler.4.07.1
+     #+END_SRC

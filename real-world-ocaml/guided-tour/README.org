@@ -1,0 +1,13 @@
+* Guided Tour
+** Creating new data types
+*** Records
+    #+BEGIN_SRC ocaml
+    type point2d = { x : float; y : float };;
+    #+END_SRC
+*** Variants
+    #+BEGIN_SRC ocaml
+    type scene_element =
+      | Circe of circle_desc
+      | Rect  of rect_desc
+      | Segment of segment_desc
+    #+END_SRC

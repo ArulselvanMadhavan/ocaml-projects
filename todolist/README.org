@@ -1,0 +1,2 @@
+* Dune basics
+  - Followed [[https://ocamlverse.github.io/content/quickstart_ocaml_project_dune.html][Basic Ocaml Project with dune]]

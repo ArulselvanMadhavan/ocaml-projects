@@ -11,3 +11,15 @@
       | Rect  of rect_desc
       | Segment of segment_desc
     #+END_SRC
+*** Arrays
+    #+BEGIN_SRC ocaml
+    
+    #+END_SRC
+*** Mutable Record fields
+    #+BEGIN_SRC ocaml
+    type running_sum = {
+      mutable sum : float;
+      mutable sum_sq : float;
+      mutable samples : int;
+    }
+    #+END_SRC

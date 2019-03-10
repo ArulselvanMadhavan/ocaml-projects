@@ -1,0 +1,11 @@
+* Files, Modules and Programs
+
+** ByteCode vs Native Code
+   - ~ocamlc~ is the bytecode compiler
+   - ~ocamlopt~ is the native code compiler
+   - dune builds targets that end with
+     - ~.bc~ as bytecode executables
+     - ~.exe~ as native code executables
+   - Bytecode can be used on more architectures
+   - Ocaml debugger only works on bytecode.
+   - Bytecode compiler is quicker than the native code compiler.

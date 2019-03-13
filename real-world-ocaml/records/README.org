@@ -1,0 +1,10 @@
+* Records
+  - Example
+    #+BEGIN_SRC ocaml
+    open Core
+    type service_info =
+      { service_name : string;
+        port         : int;
+        protocol     : string;
+      }
+    #+END_SRC

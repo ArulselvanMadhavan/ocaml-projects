@@ -1,0 +1,9 @@
+* Functors
+  - Dependency Injection
+  - Autoextension of modules
+  - Instantiating modules with state
+
+** Destructive Substitution
+   #+BEGIN_SRC
+   <Module type> with type <type> := <type'>
+   #+END_SRC

@@ -1,4 +1,4 @@
 (library
-  (name dictionary)
+  (name rwo-imperative)
   (libraries base))
 

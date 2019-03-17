@@ -2,3 +2,17 @@
 ** Imperative Dictionaries
    - Open Hashing scheme
      - Hash table will be an array of buckets.
+** Array-Like Data
+   - General purpose polymorphic arrays.
+   - /Array.set/
+   - /Array.blit/ - copying values from one range of indices to another.
+   - Literals are writtten using [| and |]
+   - Strings are byte arrays
+   - BigArrays - handle to a block of memory stored outside of OCaml heap.
+   - Mutable Record fields
+   - Ref cells
+     #+BEGIN_SRC ocaml
+     type 'a ref = { mutable contents : 'a }
+     #+END_SRC
+   - Foreign Functions
+   - for and while loops

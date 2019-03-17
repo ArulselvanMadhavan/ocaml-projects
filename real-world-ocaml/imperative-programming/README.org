@@ -1,0 +1,4 @@
+* Imperative Programming
+** Imperative Dictionaries
+   - Open Hashing scheme
+     - Hash table will be an array of buckets.

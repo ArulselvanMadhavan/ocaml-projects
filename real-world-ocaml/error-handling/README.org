@@ -1,0 +1,41 @@
+* Error Handling
+** Error-Aware Return Types
+   - Ex: Option Types
+** Encoding Errors with Result
+   #+BEGIN_SRC ocaml
+   module Result : sig
+     type ('a,'b) t = | Ok of 'a
+                      | Error of 'b
+   end
+   #+END_SRC
+** Error and Or_error
+   - Constructing /Error.t/
+   - Standardizing error types used to represent has its benefits like
+     allowing us to write utility functions to automate common error
+     handling patterns.
+   - Error type should give a good mix of efficiency, convenience and
+     control over the presentation of errors.
+   - Most common way to create Error.t is using s-expressions.
+   - An s-expression is a balanced parenthetical expression where the
+     leaves of the expressions are strings.
+     #+BEGIN_SRC ocaml
+     (This (is an) (s (expression)))
+     #+END_SRC
+   - Idiomatic way of creating errors using preprocessors
+     #+BEGIN_SRC ocaml
+     Error.create "Something went wrong" (3.5, ["a";"b"], 6034) [%sexp_of: float * string list * int];;
+     #+END_SRC
+** Exceptions
+   - Similar to other langs
+   - /failWith/
+   - /assert/ - Shows line number and column number
+   - /try <expn> with/
+   - /Exn.protect/
+   - /exception/ keyword inside a match statement is used to mark
+     exception handling cases.
+     #+BEGIN_SRC ocaml
+     match expression with
+     | exception _ -> 0.
+     #+END_SRC
+   - Backtraces - exceptions provide stack backtrace.
+   - 

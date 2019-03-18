@@ -16,3 +16,9 @@
      #+END_SRC
    - Foreign Functions
    - for and while loops
+** Iteration functions
+   - /iter/
+   - /find_el/
+** Laziness and Other Benign effects
+** Memoization and Dynamic Programming
+   

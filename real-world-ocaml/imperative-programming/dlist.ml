@@ -40,7 +40,7 @@ let insert_after elt value =
   elt.next <- Some new_elt;
   new_elt
 
-let remove t elt =
+let remove _ elt =
   let { prev; next; _ } = elt in
   begin match prev with
     | Some prev -> prev.next <- next
@@ -51,6 +51,22 @@ let remove t elt =
     | None -> ()
   end;
   elt.next <- None;
-  elt.prev <- None;
+  elt.prev <- None
   
-      
+let iter t ~f =
+  let rec loop = function
+    | None -> None
+    | Some elt ->
+      f (value elt);
+      loop (next elt)
+  in
+  loop !t
+
+let find_el t ~f =
+  let rec loop = function
+    | None -> None
+    | Some elt ->
+      if f (value elt) then Some elt
+      else loop (next elt)
+  in
+  loop !t

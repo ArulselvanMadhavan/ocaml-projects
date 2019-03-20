@@ -1,0 +1,7 @@
+* First Class Modules
+** Working with First Class Modules
+   - First class module is created by packaging up a module with a
+     signature that it satisfies.
+     #+BEGIN_SRC ocaml
+     (module <Module> : <Module_type>)
+     #+END_SRC

@@ -1,0 +1,13 @@
+* Objects
+** When to use Objects
+   - First class modules are more expressive(A module can include
+     types, while classes and objects cannot)
+   - Modules, functors and data types also offer a wide range of ways
+     to express program structure.
+   - Objects vs Records
+     - Objects don't require type definitions
+     - Support for row polymorphism
+     - Heavy syntax
+     - Runtime cost
+     - Objects can use the benefits of class system like inheritance
+       and open recursion.

@@ -1,0 +1,55 @@
+* Memory Representation of Values
+** OCaml types at Runtime
+   - Compiler Phase 1: Syntax Checking
+     - Produces AST
+   - Compiler Phase 2: Type Checking
+     - Checks if the AST is a validly typed program.
+   - OCaml verifies lot of type information at compile time so it
+     doesn't need to keep track of as much information at runtime.
+** OCaml blocks and values
+   - Running OCaml blocks of memory to represent values such as
+     tuples, records, closures or arrays.
+   - OCaml value is a single memory word that is either an immediate
+     integer or a pointer to some other memory.
+   - OCaml runtime tracks all values so that it can free them when
+     they are no longer needed.
+   - OCaml uses a uniform memory representation in that it stores
+     every OCaml variable as a /value/
+** Distinguishing Integers and Pointers at Runtime
+   - Wrapping primitive types(such as integers) inside another data
+     structure that records extra metadata about the value is known as /boxing/
+   - OCaml values use a single tag bit per word to distinguish
+     integers and pointers at runtime.
+   - Some OCaml values that use this are
+     - bool
+     - int
+     - empty list
+     - unit
+     - variants without constructors.
+** OCaml blocks and Values
+   - Block has
+     - size (22 or 54 bits)
+     - color (2 bits)
+       - Used to keep track of its during /Mark-and-Sweep/ collection.
+     - tag byte (8 bits)
+       - Used to indicate whether the subsequent data is opaque or
+         OCaml fields.
+     - array of values
+   - size, color and tag byte form a header and their length is
+     strictly the size of 1 word(32 bits or 64 bits).
+   - All OCaml types are distilled down into values.
+** Integers, Characters and Other Basic Types
+   - Basic types are efficiently stored as unboxed integers at runtime.
+   - /int/
+   - /unit/ and the empty list [] are stored as constant integers.
+   - /Boolean/ - 1 for true and 0 for false
+   - unboxed integers are never allocated on the heap and can always
+     be passed directly to registers.
+** Tuples, Records and Arrays
+   - Tuples, records and arrays are all represented identically.
+     - tag 0
+     - Tuples and records have constant size determined at compile time.
+** Floating Point Numbers and Arrays
+   - Floating Point Numbers are stored as full, double-precision values.
+   - Individual floating-point values are stored as a block with a
+     single field that contains the number.

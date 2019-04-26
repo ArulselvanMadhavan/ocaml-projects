@@ -1,0 +1,43 @@
+* Compiler Backend: Bytecode and Native code
+** What to expect
+   - untyped intermediate lambda code where pattern matching is optimized
+   - bytecode /ocamlc/ compiler and /ocamlrun/ interpreter
+   - nativecode /ocamlopt/ code generator, and debugging and profiling
+     native code.
+** Untyped Lambda form
+   - First code generation phase eliminates all the static type
+     information into a simpler intermediate /lambda form/.
+   - Lambda form discards higher-level constructs such as modules and
+     objects and replaces them with simpler values such as records and
+     function pointers.
+   - Pattern matches are analyzed and compiled into highly optmized automata.
+   - discards OCaml static type information
+   - maps source code into runtime memory representation.
+   - performs optimizations
+   - most notable optimization is converting pattern matching
+     statements into more optimized low-level statements.
+** Pattern Matching Optimization
+   - Compiler dumps the lambda form in an s-expression syntax(with
+     /-dlambda/ flag)
+   - Global values are created using /setglobal/
+   - OCaml values are created using /makeblock/
+** Generating Portable Bytecode
+   - Bytecode compiler
+   - /ocamlc/ - compiles files into a bytecode that is a close mapping
+     to the lambda form.
+   - /ocamlrun/ - A portable interpreter that executes the bytecode.
+   - Why bytecode?
+     - Simplicity
+     - Portability
+     - Compilation speed
+   - Mapping from lambda form to bytecode is straightforward
+   - Predictable(but slow) execution speed
+   - Bytecode interpreter implements a stack-based virtual machine.
+   - Interpreter virtual machine has 7 registers
+     - program counter
+     - stack
+     - exception and argument pointers
+     - accumulator
+     - environment
+     - global data
+   - /dinstr/ - display bytecode info in textual form

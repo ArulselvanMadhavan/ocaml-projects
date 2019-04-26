@@ -1,0 +1,32 @@
+* Understanding the Garbage Collector
+** Mark and Sweep Garbage collection
+** Generational Garbage Collection
+   - Separate memory regions to hold blocks based on how long the
+     blocks have been live.
+     - A small, fixed-size minor heap where most blocks are initially allocated.
+     - A larger, variable size major heap for blocks that have been
+       live longer.
+   - A typical functional programming style means that young blocks
+     tend to die young and old blocks tend to stay around for longer
+     than younger ones. This is often referred to as the /generational hypothesis/.
+   - OCaml uses different memory layouts and garbage-collection
+     algorithms for the major and minor heaps to account for this
+     generational difference.
+** GC Module and OCamlRunParam
+   - OCaml provides several mechanisms to query and alter the behavior
+     of runtime system.
+   - /Gc/ module provides this functionality.
+   - /OCAMLRUNPARAM/ - env variable that can be set before launcing
+     your application for tweaking GC parameters without recompiling.
+** Fast Minor Heap
+   - short-lived values are held.
+   - One contiguous chunk of virtual memory containing a sequence of
+     OCaml blocks.
+   - Garbage-collect the minor heap, OCaml uses copying collection to
+     move all live blocks in the minor heap to the major heap.
+   - Garbage Collection in minor heap stops the world
+** Allocating on the minor heap
+   - Minor heap is a contiguous chunk of virtual memory that is
+     usually a few megabytes in size so that it can be scanned quickly.
+   - /caml_young_start/ and /caml_young_end/ mark the start and end of
+     the heap region.

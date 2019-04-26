@@ -1,0 +1,27 @@
+* Maps and Hash Tables
+** Association lists
+   - Simple and easy to use but their performance is not ideal.
+   - Every operation requires a linear-time scan of the list.
+** Maps
+   - Immutable tree-based data structure
+   - Operations take logarthmic in the size of the map.
+** HashTable
+   - Mutable data structure where most operations have constant time complexity.
+   - Imperative cousin of Maps.
+** Sets
+** Comparator witnesses
+   - Used to identify the comparison function being used.
+** Perils of Polymorphic compare
+   - Polymorphic compare is convenient
+   - Has a fixed algorithm for comparing values of any type
+   - Results can be surprising.
+   - Polymorphic compare is /structural/
+   - Operates on the runtime representation of OCaml values
+   - So, it walks the structure of OCaml values with no regard for
+     their types.
+** Note about equality
+   - /==/ is for physical equality
+     - Same pointer in memory
+   - /=/ is for structural equality
+     - walks the structure and tests if the values are equal
+     - doesn't terminate when the data structure is cyclical

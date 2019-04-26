@@ -1,0 +1,28 @@
+* Compiler Frontend: Parsing and Type Checking
+** Compiler front ends
+   - /ocamlc/ and /ocamlopt/
+   - Compilation pipeline
+   - Source preprocessing - /Camlp4/ and the intermediate forms
+   - Type checking process - include module resolution
+** Overview of the toolchain
+   - Each source file represents a compilation unit.
+     - /Source code/ gets parsed and preprocessed using /Camlp4/
+       syntax extensions.
+     - Parsetree (untyped AST) - type inference and checking
+     - Typedtree - pattern matching compilation, elimination of
+       modules and classes
+     - Lambda
+       - Bytecode generation
+         - ocamlrun
+         - Interpreted
+       - Native code generation
+         - closure conversion, inlining, uncurrying, data
+           representation strategy
+         - cmm - code generation, assembly & linking.
+         - compiled
+** Multiple compiler backends
+   - bytecode can be run by a portable interpreter and transformed to
+     another language like JS or C
+   - Native code compiler generates specialized executable binaries
+     suitable for high-performance applications.
+** Obtaining the compiler source code

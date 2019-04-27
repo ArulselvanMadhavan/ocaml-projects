@@ -1,2 +1,2 @@
-include Stack_intf.Chapter2 (** inline *)          
+include Stack_intf.Stack_intf (** inline *)          
 

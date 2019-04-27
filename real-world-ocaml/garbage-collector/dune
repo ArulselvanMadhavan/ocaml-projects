@@ -1,0 +1,3 @@
+(executable
+  (name mutability)
+  (libraries core core_bench))

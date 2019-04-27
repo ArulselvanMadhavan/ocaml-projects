@@ -1,0 +1,4 @@
+(executable
+  (name Unique_Query_Handler)
+  (libraries core)
+  (preprocess (pps ppx_jane ppx_sexp_conv)))

@@ -1,12 +1,16 @@
 open Chapter2.Stack
+open Chapter2.Tree
 
 module List_Helpers (L : Stack with type 'a t = 'a list) = struct
   let rec ( ++ ) xs ys = match xs with [] -> ys | x :: xs -> x :: (xs ++ ys)
 
   let rec update = function
-    | [], _, _ -> failwith "subscript"
-    | _ :: xs, 0, y -> y :: xs
-    | x :: xs, i, y -> x :: update (xs, i - 1, y)
+    | [], _, _ ->
+        failwith "subscript"
+    | _ :: xs, 0, y ->
+        y :: xs
+    | x :: xs, i, y ->
+        x :: update (xs, i - 1, y)
 
   let rec suffixes = function [] -> [] | _ :: ys as xs -> xs :: suffixes ys
 end

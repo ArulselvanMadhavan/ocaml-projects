@@ -15,6 +15,32 @@ module List_Helpers (L : Stack with type 'a t = 'a list) = struct
   let rec suffixes = function [] -> [] | _ :: ys as xs -> xs :: suffixes ys
 end
 
+module Binary_Tree_Exercises (O : Ordered) = struct
+  exception Element_exists
+
+  type 'a tree = E | T of O.t tree * O.t * O.t tree
+
+  (* Exercise 2.2 *)
+  let member_less_comparisons x s =
+    let rec go = function
+      | y, E ->
+          if O.eq (x, y) then true else false
+      | y, T (a, z, b) ->
+          if O.lt (x, z) then go (z, a) else go (y, b)
+    in
+    go (x, s)
+
+  (* Exercise 2.3 and 2.4*)
+  let insert_less_comparisons x s =
+    let rec go = function
+      | y, E ->
+          if O.eq (x, y) then raise Element_exists else T (E, x, E)
+      | y, T (a, z, b) ->
+          if O.lt (x, z) then go (z, a) else go (y, b)
+    in
+    try go (x, s) with Element_exists -> s
+end
+
 let () =
   let emptyList = List.empty in
   print_endline (string_of_bool (List.isEmpty emptyList))

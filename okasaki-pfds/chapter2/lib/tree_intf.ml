@@ -25,5 +25,11 @@ module type Ordered = sig
 end
 
 module type Tree_intf = sig
+  module type Tree = Tree
+
+  module type Set = Set
+
+  module type Ordered = Ordered
+
   module UnbalancedSet (O : Ordered) : Set
 end

@@ -1,6 +1,6 @@
 include Tree_intf
 
-module UnbalancedSet (O : Ordered) = struct
+module UnbalancedSet (O : Ordered) : SetUsingTree with type elem = O.t = struct
   type elem = O.t
 
   type tree = E | T of tree * elem * tree

@@ -1,5 +1,7 @@
 module type Tree = sig
-  type 'a tree = E | T of 'a tree * 'a * 'a tree
+  type elem
+
+  type tree = E | T of tree * elem * tree
 end
 
 module type Set = sig
@@ -24,6 +26,12 @@ module type Ordered = sig
   val leq : t * t -> bool
 end
 
+module type SetUsingTree = sig
+  include Tree
+
+  include Set with type set = tree and type elem := elem
+end
+
 module type Tree_intf = sig
   module type Tree = Tree
 
@@ -31,5 +39,7 @@ module type Tree_intf = sig
 
   module type Ordered = Ordered
 
-  module UnbalancedSet (O : Ordered) : Set
+  module type SetUsingTree = SetUsingTree
+
+  module UnbalancedSet (O : Ordered) : SetUsingTree with type elem = O.t
 end

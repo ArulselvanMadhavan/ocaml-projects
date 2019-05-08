@@ -16,9 +16,9 @@ module List_Helpers (L : Stack with type 'a t = 'a list) = struct
 end
 
 module Binary_Tree_Exercises (O : Ordered) = struct
-  exception Element_exists
+  include UnbalancedSet (O)
 
-  type 'a tree = E | T of O.t tree * O.t * O.t tree
+  exception Element_exists
 
   (* Exercise 2.2 *)
   let member_less_comparisons x s =

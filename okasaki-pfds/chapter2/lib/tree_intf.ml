@@ -2,6 +2,7 @@ module type Tree = sig
   type elem
 
   type tree = E | T of tree * elem * tree
+  [@@deriving show]
 end
 
 module type Set = sig

@@ -33,6 +33,17 @@ module type SetUsingTree = sig
   include Set with type set = tree and type elem := elem
 end
 
+module type FiniteMap = sig
+  type key
+  type 'a map
+
+  val empty : 'a map
+
+  val bind : key * 'a * 'a map -> 'a map
+
+  val lookup : key * 'a map -> 'a
+end
+
 module type Tree_intf = sig
   module type Tree = Tree
 
@@ -42,5 +53,9 @@ module type Tree_intf = sig
 
   module type SetUsingTree = SetUsingTree
 
+  module type FiniteMap = FiniteMap
+
   module UnbalancedSet (O : Ordered) : SetUsingTree with type elem = O.t
+
+  module UnbalancedFiniteMap (O:Ordered) : FiniteMap
 end

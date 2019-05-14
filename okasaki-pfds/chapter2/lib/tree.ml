@@ -26,3 +26,9 @@ module UnbalancedSet (O : Ordered) : SetUsingTree with type elem = O.t = struct
         else if O.lt (y, x) then T (a, y, insert (x, b))
         else T (a, y, b)
 end
+
+module UnbalancedFiniteMap (O:Ordered):FiniteMap = struct
+
+  include UnbalancedSet(O)
+end
+

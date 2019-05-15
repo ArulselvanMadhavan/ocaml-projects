@@ -27,8 +27,26 @@ module UnbalancedSet (O : Ordered) : SetUsingTree with type elem = O.t = struct
         else T (a, y, b)
 end
 
-module UnbalancedFiniteMap (O:Ordered):FiniteMap = struct
+module UnbalancedFiniteMap (O : Ordered) : FiniteMap = struct
+  type key = O.t
 
-  include UnbalancedSet(O)
+  type 'a map = E | T of 'a map * key * 'a * 'a map
+
+  let empty = E
+
+  let rec lookup = function
+    | _, E ->
+      raise Not_found
+    | k, T (a, x, y, b) ->
+        if O.lt (k, x) then lookup (k, a)
+        else if O.lt (x, k) then lookup (k, b)
+        else y
+
+  let rec bind = function
+    | _, _, E ->
+        E
+    | k, v, T (a, x, _, b) ->
+        if O.lt (k, x) then bind (k, v, a)
+        else if O.lt (x, k) then bind (k, v, b)
+        else T (a, k, v, b)
 end
-

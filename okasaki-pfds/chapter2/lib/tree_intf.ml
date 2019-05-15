@@ -1,8 +1,7 @@
 module type Tree = sig
   type elem
 
-  type tree = E | T of tree * elem * tree
-  [@@deriving show]
+  type tree = E | T of tree * elem * tree [@@deriving show]
 end
 
 module type Set = sig
@@ -35,6 +34,7 @@ end
 
 module type FiniteMap = sig
   type key
+
   type 'a map
 
   val empty : 'a map
@@ -57,5 +57,5 @@ module type Tree_intf = sig
 
   module UnbalancedSet (O : Ordered) : SetUsingTree with type elem = O.t
 
-  module UnbalancedFiniteMap (O:Ordered) : FiniteMap
+  module UnbalancedFiniteMap (O : Ordered) : FiniteMap
 end

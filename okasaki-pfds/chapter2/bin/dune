@@ -1,0 +1,3 @@
+(executable
+  (name exercises)
+  (libraries base chapter2))

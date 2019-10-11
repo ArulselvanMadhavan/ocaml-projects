@@ -1,0 +1,7 @@
+* Concurrent Programming with Async
+** Approach(es) to concurrency
+   - Use preemptive system threads
+     - Requires significant memory and other resources per thread.
+     - No control over scheduling of threads on CPU(OS interleaves are
+       not deterministic)
+   - Single-threaded program using event loop

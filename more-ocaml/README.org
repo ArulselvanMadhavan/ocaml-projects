@@ -1,0 +1,6 @@
+* More OCaml
+** Setup
+   #+BEGIN_SRC bash
+   opam install more-ocaml
+   #+END_SRC
+** 

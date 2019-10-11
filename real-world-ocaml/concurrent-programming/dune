@@ -1,0 +1,3 @@
+(executable
+  (modules io_example)
+  (libraries core))

@@ -1,0 +1,4 @@
+(library
+  (name stack)
+  (libraries base)
+  (preprocess (pps ppx_deriving)))

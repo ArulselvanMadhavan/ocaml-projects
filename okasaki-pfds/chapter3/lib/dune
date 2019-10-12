@@ -1,0 +1,4 @@
+(library
+  (name chapter3)
+  (libraries base)
+  (preprocess (pps ppx_deriving.std)))

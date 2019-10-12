@@ -1,0 +1,29 @@
+* Familiar Data Structures in a Functional setting
+  - Leftist heaps
+  - Binomial queues
+  - Red Black trees
+
+** Heaps
+   - Efficient access to arbitrary elements(min, max)
+   - Priority queue or heap
+   - Heaps are often implemented as /heap-ordered/ trees.
+
+** Leftist Heaps
+   - Heap Ordered Binary trees
+   - Rank of a left child is atleast as large as the rank of the right
+     sibling.
+   - Rank of a node: Length of its right spine.
+   - Right spine is always the shortest path to an empty node.
+
+** Binomial Heaps
+   - /Binomial heaps/ or /Binomial queues/
+   - Insert and merge can be made to run in O(1).
+   - Binomial heaps are composed of primitive objects known as
+     binomial trees.
+   - Binomial tree of rank 0 is a singleton node.
+   - Binomial tree of rank r + 1 is formed by linking two binomial
+     trees of rank r, making one tree the leftmost child of the other.
+   - ANother definition: Binomial tree of rank r is a node with r
+     children (t1...tr), where each ti is a binomial tree of rank r - i.
+   - BTree of rank r -> has exactly 2^r nodes.
+   - Implementation of Binary Tree.

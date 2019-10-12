@@ -1,0 +1,17 @@
+EXCLUDE_QUERY_DIR
+B /home/arul/.opam/default/lib/base
+B /home/arul/.opam/default/lib/base/caml
+B /home/arul/.opam/default/lib/base/shadow_stdlib
+B /home/arul/.opam/default/lib/ppx_deriving
+B /home/arul/.opam/default/lib/result
+B /home/arul/.opam/default/lib/sexplib0
+B ../_build/default/lib/.chapter3.objs/byte
+S /home/arul/.opam/default/lib/base
+S /home/arul/.opam/default/lib/base/caml
+S /home/arul/.opam/default/lib/base/shadow_stdlib
+S /home/arul/.opam/default/lib/ppx_deriving
+S /home/arul/.opam/default/lib/result
+S /home/arul/.opam/default/lib/sexplib0
+S .
+FLG -ppx '/home/arul/dev/ocaml-projects/okasaki-pfds/chapter3/_build/default/.ppx/30a18adec0a1407675322d723bf1b0ae/ppx.exe --as-ppx --cookie '\''library-name="chapter3"'\'''
+FLG -open Chapter3 -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs

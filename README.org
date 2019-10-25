@@ -17,3 +17,11 @@
      #require "ppx_jane";;
      let custom_to_sexp = [%sexp_of: float * string list * int];;
      #+END_SRC
+   - For loading files with "include" declarations.
+     - First use #mod_use "FileName of the module"
+     - Then use #use "filename"
+** TODO
+   - Figure out how to generate ocaml docs.
+* Module Language Best practices
+** Difference between mli and module type
+** When to use them

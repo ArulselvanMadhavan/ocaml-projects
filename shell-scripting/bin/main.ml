@@ -6,4 +6,7 @@ let command (exe: string) : bool t =
   find_executable exe >>| fun exe -> exe <> None
                                    
 let () =
-  print_string (Printf.sprintf "Result: %b" (eval (command "ocamlformat")))
+  let fork_result = fork (command "dune") (command "ocamlformat") >>| function
+  | (true, true) -> "found"
+  | (_, _) -> "not found" in
+  print_string (eval fork_result)

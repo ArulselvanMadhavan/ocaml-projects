@@ -1,0 +1,19 @@
+opam-version: "2.0"
+name: "ocaml-pearls"
+version: "0.1"
+synopsis: "Functional Pearls in OCaml"
+description: """
+Richard Bird's Functional Pearls book in OCaml
+"""
+maintainer: "arulselvan1234@gmail.com"
+authors: "arulselvan1234@gmail.com"
+license: "GPL-3"
+homepage: ""
+bug-reports: ""
+dev-repo: ""
+depends: [ "ocaml" "ocamlfind" ]
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]

@@ -1,0 +1,10 @@
+* Smallest Free Number
+** Problem
+   - Smallest natural number not in a given finite set X of natural numbers
+   - Is sorted?
+     - Y - first gap in the sequence
+     - N - Tricky
+   - Linear time solution?
+** Array based solution
+   - 
+   

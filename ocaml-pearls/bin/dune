@@ -1,0 +1,7 @@
+(executable
+  (name main)
+  (libraries pearls))
+
+(install
+  (section bin)
+  (files (main.exe as ocaml-pearls)))

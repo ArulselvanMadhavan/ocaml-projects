@@ -1,0 +1,3 @@
+(library
+  (name pearls)
+  (libraries smallest_free_number))

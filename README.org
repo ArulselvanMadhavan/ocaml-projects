@@ -11,6 +11,9 @@
      #+BEGIN_SRC bash
      opam switch create . ocaml-base-compiler.4.07.1
      #+END_SRC
+   - opam list -a
+   - opam search <pkg>
+   - opam show <pkg>
 ** UTOP
    - For loading preprocessors
      #+BEGIN_SRC ocaml
@@ -20,6 +23,8 @@
    - For loading files with "include" declarations.
      - First use #mod_use "FileName of the module"
      - Then use #use "filename"
+** Dune
+   - dune init exe <name>
 ** TODO
    - Figure out how to generate ocaml docs.
 * Module Language Best practices

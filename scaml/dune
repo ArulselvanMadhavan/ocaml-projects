@@ -1,0 +1,3 @@
+(executable
+ (name scaml)
+ (libraries shexp.process))

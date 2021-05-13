@@ -11,7 +11,7 @@ license: "GPL-3"
 homepage: ""
 bug-reports: ""
 dev-repo: ""
-depends: [ "ocaml" "ocamlfind" ]
+depends: [ "ocaml" "ocamlfind" "core"]
 build: [
   ["./configure" "--prefix=%{prefix}%"]
   [make]

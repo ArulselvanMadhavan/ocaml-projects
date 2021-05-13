@@ -1,2 +1,3 @@
 (library
-  (name smallest_free_number))
+  (name smallest_free_number)
+  (libraries core))
